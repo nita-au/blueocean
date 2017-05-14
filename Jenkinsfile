@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'echo "hello world"'
+        sh '${mvn}/bin/mvn clean package'
+        archiveArtifacts 'target/blueocean*.jar'
       }
     }
     stage('Test') {
@@ -11,5 +12,8 @@ pipeline {
         sh 'echo "test"'
       }
     }
+  }
+  environment {
+    mvn = '/opt/apache-maven-3.5.0'
   }
 }
