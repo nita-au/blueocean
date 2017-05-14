@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'mvn clean package'
+        sh '${mvn}/bin/mvn clean package'
       }
     }
     stage('Test') {
@@ -11,5 +11,8 @@ pipeline {
         sh 'echo "test"'
       }
     }
+  }
+  environment {
+    mvn = '/opt/apache-maven-3.5.0'
   }
 }
