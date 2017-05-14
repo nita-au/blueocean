@@ -4,6 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh '${mvn}/bin/mvn clean package'
+        archiveArtifacts 'target/blueocean*.jar'
       }
     }
     stage('Test') {
